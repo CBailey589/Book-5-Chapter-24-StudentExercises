@@ -1,0 +1,11 @@
+C:\Users\baile\workspace\classExercises\SQL\StudentExercises\StudentExercises\obj\Debug\netcoreapp2.2\StudentExercises.csprojAssemblyReference.cache
+C:\Users\baile\workspace\classExercises\SQL\StudentExercises\StudentExercises\obj\Debug\netcoreapp2.2\StudentExercises.csproj.CoreCompileInputs.cache
+C:\Users\baile\workspace\classExercises\SQL\StudentExercises\StudentExercises\obj\Debug\netcoreapp2.2\StudentExercises.AssemblyInfoInputs.cache
+C:\Users\baile\workspace\classExercises\SQL\StudentExercises\StudentExercises\obj\Debug\netcoreapp2.2\StudentExercises.AssemblyInfo.cs
+C:\Users\baile\workspace\classExercises\SQL\StudentExercises\StudentExercises\bin\Debug\netcoreapp2.2\StudentExercises.deps.json
+C:\Users\baile\workspace\classExercises\SQL\StudentExercises\StudentExercises\bin\Debug\netcoreapp2.2\StudentExercises.runtimeconfig.json
+C:\Users\baile\workspace\classExercises\SQL\StudentExercises\StudentExercises\bin\Debug\netcoreapp2.2\StudentExercises.runtimeconfig.dev.json
+C:\Users\baile\workspace\classExercises\SQL\StudentExercises\StudentExercises\bin\Debug\netcoreapp2.2\StudentExercises.dll
+C:\Users\baile\workspace\classExercises\SQL\StudentExercises\StudentExercises\bin\Debug\netcoreapp2.2\StudentExercises.pdb
+C:\Users\baile\workspace\classExercises\SQL\StudentExercises\StudentExercises\obj\Debug\netcoreapp2.2\StudentExercises.dll
+C:\Users\baile\workspace\classExercises\SQL\StudentExercises\StudentExercises\obj\Debug\netcoreapp2.2\StudentExercises.pdb

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\baile\\workspace\\classExercises\\SQL\\studentExercises\\StudentExercises\\StudentExercises.csproj": {}
+    "C:\\Users\\baile\\workspace\\classExercises\\SQL\\StudentExercises\\StudentExercises\\StudentExercises.csproj": {}
   },
   "projects": {
-    "C:\\Users\\baile\\workspace\\classExercises\\SQL\\studentExercises\\StudentExercises\\StudentExercises.csproj": {
+    "C:\\Users\\baile\\workspace\\classExercises\\SQL\\StudentExercises\\StudentExercises\\StudentExercises.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\baile\\workspace\\classExercises\\SQL\\studentExercises\\StudentExercises\\StudentExercises.csproj",
+        "projectUniqueName": "C:\\Users\\baile\\workspace\\classExercises\\SQL\\StudentExercises\\StudentExercises\\StudentExercises.csproj",
         "projectName": "StudentExercises",
-        "projectPath": "C:\\Users\\baile\\workspace\\classExercises\\SQL\\studentExercises\\StudentExercises\\StudentExercises.csproj",
+        "projectPath": "C:\\Users\\baile\\workspace\\classExercises\\SQL\\StudentExercises\\StudentExercises\\StudentExercises.csproj",
         "packagesPath": "C:\\Users\\baile\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\baile\\workspace\\classExercises\\SQL\\studentExercises\\StudentExercises\\obj\\",
+        "outputPath": "C:\\Users\\baile\\workspace\\classExercises\\SQL\\StudentExercises\\StudentExercises\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -90,10 +90,25 @@ Which action do you want?
                         Console.Clear();
                         DisplayBanner();
                         List<Instructor> allInstructors = repository.GETALLINSTRUCTORS();
+                        Console.WriteLine("All NSS Instructors:");
                         allInstructors.ForEach(inst =>
                             Console.WriteLine($"{inst.Id}: {inst.FirstName} {inst.LastName} in {inst.Cohort.Designation}"));
                         Pause();
                         break;
+
+                    case 9: //Create a new instructor and assign them to an existing cohort
+                        CreateAndAssignANewInstructor.CollectInput();
+                        break;
+
+                    case 10: //Display all NSS exercises
+                        Console.Clear();
+                        DisplayBanner();
+                        List<Exercise> allExercises = repository.GETALLEXERCISES();
+                        Console.WriteLine($"All NSS Exercises:");
+                        allExercises.ForEach(exercise =>
+                            Console.WriteLine($"{exercise.Id}) TITLE: {exercise.Title}, LANGUAGE: {exercise.ExerciseLanguage}"));
+                        Pause();
+                        break; 
 
 
 

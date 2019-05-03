@@ -86,6 +86,17 @@ Which action do you want?
                         ListExercisesAssignedToStudent.CollectInput();
                         break;
 
+                    case 8: //Display all NSS instructors
+                        Console.Clear();
+                        DisplayBanner();
+                        List<Instructor> allInstructors = repository.GETALLINSTRUCTORS();
+                        allInstructors.ForEach(inst =>
+                            Console.WriteLine($"{inst.Id}: {inst.FirstName} {inst.LastName} in {inst.Cohort.Designation}"));
+                        Pause();
+                        break;
+
+
+
                     case 99:
                         return;
                     default:

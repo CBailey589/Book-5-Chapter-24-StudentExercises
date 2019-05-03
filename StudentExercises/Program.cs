@@ -78,6 +78,10 @@ Which action do you want?
                         MoveStudentToADifferentCohort.CollectInput();
                         break;
 
+                    case 6: //Assign an exercise to a student
+                        AssignAnExerciseToAStudent.CollectInput();
+                        break;
+
                     case 99:
                         return;
                     default:

@@ -70,6 +70,10 @@ Which action do you want?
                         SearchForStudentsByLastName.CollectInput();
                         break;
 
+                    case 4: //Create a new student and assign them to an existing cohort
+                        CreateAndAssignANewStudent.CollectInput();
+                        break;
+
                     case 99:
                         return;
                     default:

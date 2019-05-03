@@ -379,6 +379,20 @@ namespace StudentExercises
             }
         }
 
+        public void ADDNEWSTUDENTTODATABASE(string fName, string lName, string sHandle, int cohortId)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = $"INSERT INTO Student (FirstName, LastName, SlackHandle, CohortId ) " +
+                        $"Values ('{fName}', '{lName}', '{sHandle}', {cohortId})";
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
 
 
         /************************************************************************************

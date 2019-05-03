@@ -108,7 +108,11 @@ Which action do you want?
                         allExercises.ForEach(exercise =>
                             Console.WriteLine($"{exercise.Id}) TITLE: {exercise.Title}, LANGUAGE: {exercise.ExerciseLanguage}"));
                         Pause();
-                        break; 
+                        break;
+
+                    case 11: //Create a new NSS exercise
+                        CreateANewExercise.CollectInput();
+                        break;
 
 
 

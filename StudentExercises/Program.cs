@@ -82,6 +82,10 @@ Which action do you want?
                         AssignAnExerciseToAStudent.CollectInput();
                         break;
 
+                    case 7: //List the exercises assigned to a student
+                        ListExercisesAssignedToStudent.CollectInput();
+                        break;
+
                     case 99:
                         return;
                     default:

@@ -430,6 +430,50 @@ namespace StudentExercises
             }
         }
 
+        public List<Exercise> SHOWEXERCISESFORSTUDENT(Student student)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = $"SELECT e.Id, e.Title, e.ExerciseLanguage " +
+                        $"FROM Student s " +
+                        $"JOIN StudentExercises x " +
+                        $"ON s.Id = x.StudentId " +
+                        $"JOIN Exercise e " +
+                        $"ON x.ExerciseId = e.Id " +
+                        $"WHERE s.Id = @studentId";
+                    cmd.Parameters.Add(new SqlParameter("@studentId", student.Id));
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    List<Exercise> studentsExercises = new List<Exercise>();
+
+
+                    while (reader.Read())
+                    {
+                        int IdValue = reader.GetInt32(reader.GetOrdinal("Id"));
+                        string TitleValue = reader.GetString(reader.GetOrdinal("Title"));
+                        string LanguageValue = reader.GetString(reader.GetOrdinal("ExerciseLanguage"));
+
+
+
+                        Exercise exercise = new Exercise
+                        {
+                            Id = IdValue,
+                            Title = TitleValue,
+                            ExerciseLanguage = LanguageValue
+                        };
+
+                        studentsExercises.Add(exercise);
+                    }
+
+                    reader.Close();
+                    return studentsExercises;
+                }
+            }
+        }
+
 
 
 

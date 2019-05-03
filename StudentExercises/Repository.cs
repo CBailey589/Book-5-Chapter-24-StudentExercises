@@ -218,6 +218,132 @@ namespace StudentExercises
             }
         }
 
+        /************************************************************************************
+        * SUDENTS:
+        ************************************************************************************/
+
+        public List<Student> GETALLSTUDENTS()
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT s.Id, s.FirstName, s.LastName, s.SlackHandle, s.CohortId, c.Designation " +
+                        "FROM Student s " +
+                        "JOIN Cohort c " +
+                        "ON s.CohortId = c.Id";
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    List<Student> allStudents = new List<Student>();
+
+
+                    while (reader.Read())
+                    {
+                        int IdValue = reader.GetInt32(reader.GetOrdinal("Id"));
+                        string FirstNameValue = reader.GetString(reader.GetOrdinal("FirstName"));
+                        string LastNameValue = reader.GetString(reader.GetOrdinal("LastName"));
+                        string SlackHandleValue = reader.GetString(reader.GetOrdinal("SlackHandle"));
+                        int CohortIdValue = reader.GetInt32(reader.GetOrdinal("CohortId"));
+                        string CohortDesignationValue = reader.GetString(reader.GetOrdinal("Designation"));
+
+
+                        Student student = new Student
+                        {
+                            Id = IdValue,
+                            FirstName = FirstNameValue,
+                            LastName = LastNameValue,
+                            SlackHandle = SlackHandleValue,
+                            CohortId = CohortIdValue,
+                            Cohort = new Cohort()
+                            {
+                                Id = CohortIdValue,
+                                Designation = CohortDesignationValue
+                            }
+                        };
+
+                        allStudents.Add(student);
+                    }
+
+                    reader.Close();
+                    return allStudents;
+                }
+            }
+        }
+
+        public List<Student> GETALLSTUDENTSINCOHORT(Cohort cohort)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT s.Id, s.FirstName, s.LastName, s.SlackHandle, s.CohortId, c.Designation " +
+                        "FROM Student s " +
+                        "JOIN Cohort c " +
+                        "ON s.CohortId = c.Id " +
+                        "WHERE c.Id = @cohortId";
+                    cmd.Parameters.Add(new SqlParameter("cohortId", cohort.Id));
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    List<Student> allStudents = new List<Student>();
+
+
+                    while (reader.Read())
+                    {
+                        int IdValue = reader.GetInt32(reader.GetOrdinal("Id"));
+                        string FirstNameValue = reader.GetString(reader.GetOrdinal("FirstName"));
+                        string LastNameValue = reader.GetString(reader.GetOrdinal("LastName"));
+                        string SlackHandleValue = reader.GetString(reader.GetOrdinal("SlackHandle"));
+                        int CohortIdValue = reader.GetInt32(reader.GetOrdinal("CohortId"));
+                        string CohortDesignationValue = reader.GetString(reader.GetOrdinal("Designation"));
+
+
+                        Student student = new Student
+                        {
+                            Id = IdValue,
+                            FirstName = FirstNameValue,
+                            LastName = LastNameValue,
+                            SlackHandle = SlackHandleValue,
+                            CohortId = CohortIdValue,
+                            Cohort = new Cohort()
+                            {
+                                Id = CohortIdValue,
+                                Designation = CohortDesignationValue
+                            }
+                        };
+
+                        allStudents.Add(student);
+                    }
+
+                    reader.Close();
+                    return allStudents;
+                }
+            }
+        }
+
+        /************************************************************************************
+        * RELATIONAL TABLE FUNCTIONS:
+        ************************************************************************************/
+
+        public void ADDSTUDENTEXERCISE(int exerciseId, int studentId)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = $"INSERT INTO StudentExercises (ExerciseId, StudentId) " +
+                        $"Values ({exerciseId}, {studentId})";
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
 
 
 

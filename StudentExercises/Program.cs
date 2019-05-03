@@ -1,100 +1,81 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using StudentExercises.Models;
+using StudentExercises.Actions;
 
 namespace StudentExercises
 {
     class Program
     {
+        public static void DisplayBanner()
+        {
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine(@"
+****************Nashville Software School*******************");
+            Console.WriteLine();
+        }
         static void Main(string[] args)
         {
             Repository repository = new Repository();
 
-            // *******************************************************************
-            //Query the database for all the Exercises:
-            //********************************************************************
-            List<Exercise> allExercises = repository.GETALLEXERCISES();
-            Console.WriteLine($"All NSS Exercises:");
-            allExercises.ForEach(exercise => 
-                Console.WriteLine($"{exercise.Id}) TITLE: {exercise.Title}, LANGUAGE: {exercise.ExerciseLanguage}"));
+            while (true)
+            {
+                DisplayBanner();
+                Console.WriteLine(@"
+--- ACTIONS RELATED TO STUDENTS ---
+1) Display all NSS students
+2) Display a cohort's students
+3) Search for students by last name
+4) Create a new student and assign them to an existing cohort
+5) Move a student from one cohort to another
+6) Assign an exercise to a student
+7) List the exercises assigned to a student
 
-            Pause();
+--- ACTIONS RELATED TO INSTRUCTORS ---
+8) Display all NSS instructors
+9) Create a new instructor and assign them to an existing cohort
 
-            // *******************************************************************
-            //Find all the exercises in the database where the language is JavaScript.
-            //********************************************************************
-            List<Exercise> JSExercises = allExercises.Where(exercise => exercise.ExerciseLanguage == "JavaScript").ToList();
-            Console.WriteLine($"All NSS JavaScript Exercises:");
-            JSExercises.ForEach(exercise =>
-                Console.WriteLine($"{exercise.Id}) TITLE: {exercise.Title}, LANGUAGE: {exercise.ExerciseLanguage}"));
+--- ACTIONS RELATED TO EXERCISES ---
+10) Display all NSS exercises
+11) Create a new NSS exercise
 
-            Pause();
+--- ACTIONS RELATED TO COHORTS ---
+12) Display all NSS cohorts
+13) Create a new NSS cohort
 
-            // *******************************************************************
-            //Insert a new exercise into the database.
-            //********************************************************************
-            Console.WriteLine("Add a new exercise");
-            Console.WriteLine("Enter a title for a new exercise:");
-            Console.WriteLine("> ");
-            string newExerciseTitle = Console.ReadLine();
-            Console.WriteLine("Enter what language the new exercise is:");
-            Console.WriteLine("> ");
-            string newExerciseLanguage = Console.ReadLine();
+99) ******* EXIT *******
 
-            //repository.CREATENEWEXERCISE(newExerciseTitle, newExerciseLanguage);
+Which action do you want?
+>
+");
 
-            // *******************************************************************
-            //Find all instructors in the database. Include each instructor's cohort.
-            //********************************************************************
-            List<Instructor> allInstructors = repository.GETALLINSTRUCTORS();
-            Console.WriteLine($"All NSS Instructors:");
-            allInstructors.ForEach(instructor =>
-                Console.WriteLine($"ID:{instructor.Id}) Name: {instructor.FirstName} {instructor.LastName}, Cohort: {instructor.Cohort.Designation}"));
+                int SwitchMenuChoice = Int32.Parse(Console.ReadLine());
+                switch (SwitchMenuChoice)
+                {
+                    case 1: // Display all NSS students
+                        Console.Clear();
+                        DisplayBanner();
+                        List<Student> allStudents = repository.GETALLSTUDENTS();
+                        allStudents.ForEach(stud =>
+                            Console.WriteLine($"{stud.Id}: {stud.FirstName} {stud.LastName} in {stud.Cohort.Designation}"));
+                        Pause();
+                        break;
 
-            Pause();
+                    case 2: // Display a cohort's students
+                        DisplayCohortsStudents.CollectInput();
+                        break;
 
-            // *******************************************************************
-            //Insert a new instructor into the database. Assign the instructor to an existing cohort.
-            //********************************************************************
-            List<Cohort> allCohorts = repository.GETALLCOHORTS();
+                    case 99:
+                        return;
+                    default:
+                        break;
 
-            Console.WriteLine("Hire a new instructor");
-            Console.WriteLine("Enter the new instructor's first name:");
-            Console.WriteLine("> ");
-            string newInstructorFirstName = Console.ReadLine();
-            Console.WriteLine("Enter the new instructor's last name:");
-            Console.WriteLine("> ");
-            string newInstructorLastName = Console.ReadLine();
-            Console.WriteLine("Enter the new instructor's Slack handle:");
-            Console.WriteLine("> ");
-            string newInstructorsSlackHandle = Console.ReadLine();
-            Console.WriteLine("What is the new instructor's specialty?:");
-            Console.WriteLine("> ");
-            string newInstructorsSpecialty = Console.ReadLine();
-            Console.WriteLine("Which cohort do you want to assign this instructor to?:");
-            Console.WriteLine("> ");
-            allCohorts.ForEach(cohort => Console.WriteLine($"{cohort.Id}: {cohort.Designation}"));
-            int newInstructorCohortId = Int32.Parse(Console.ReadLine());
+                }
 
-            //repository.ADDNEWINSTRUCTORTODATABASE(newInstructorFirstName, newInstructorLastName, newInstructorsSlackHandle,
-            //    newInstructorsSpecialty, newInstructorCohortId);
-
-            Pause();
-
-            // *******************************************************************
-            //Assign an existing exercise to an existing student.
-            //********************************************************************
-            
-
-
-
-
-
-
-
-
+            }
         }
+
 
         public static void Pause()
         {

@@ -66,6 +66,10 @@ Which action do you want?
                         DisplayCohortsStudents.CollectInput();
                         break;
 
+                    case 3: //Search for students by last name
+                        SearchForStudentsByLastName.CollectInput();
+                        break;
+
                     case 99:
                         return;
                     default:

@@ -74,6 +74,10 @@ Which action do you want?
                         CreateAndAssignANewStudent.CollectInput();
                         break;
 
+                    case 5: //Move a student from one cohort to another
+                        MoveStudentToADifferentCohort.CollectInput();
+                        break;
+
                     case 99:
                         return;
                     default:

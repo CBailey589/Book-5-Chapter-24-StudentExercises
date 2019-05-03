@@ -393,6 +393,23 @@ namespace StudentExercises
             }
         }
 
+        public void MOVESTUDENTTODIFFERENTCOHORT(int studentId, int cohortId)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = $"UPDATE Student " +
+                        $"SET CohortId = @cohortId " +
+                        $"WHERE Id = @studentId";
+                    cmd.Parameters.Add(new SqlParameter("@cohortId", cohortId));
+                    cmd.Parameters.Add(new SqlParameter("@studentId", studentId));
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
 
 
         /************************************************************************************

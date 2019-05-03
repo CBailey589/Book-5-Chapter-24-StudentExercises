@@ -114,15 +114,26 @@ Which action do you want?
                         CreateANewExercise.CollectInput();
                         break;
 
+                    case 12: //Display all NSS cohorts
+                        Console.Clear();
+                        DisplayBanner();
+                        List<Cohort> allCohorts = repository.GETALLCOHORTS();
+                        Console.WriteLine($"All NSS Cohorts:");
+                        allCohorts.ForEach(cohort =>
+                            Console.WriteLine($"{cohort.Id}): {cohort.Designation}"));
+                        Pause();
+                        break;
 
+                    case 13: //Create a new NSS cohort
+                        AddNewCohort.CollectInput();
+                        break;
 
-                    case 99:
+                    case 99: //EXIT
                         return;
                     default:
                         break;
 
                 }
-
             }
         }
 

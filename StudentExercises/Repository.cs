@@ -218,6 +218,20 @@ namespace StudentExercises
             }
         }
 
+        public void ADDNEWCOHORTTODATABASE(string designation)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = $"INSERT INTO Cohort (Designation) " +
+                        $"Values ('{designation}')";
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         /************************************************************************************
         * SUDENTS:
         ************************************************************************************/
